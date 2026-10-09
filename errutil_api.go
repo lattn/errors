@@ -201,6 +201,8 @@ func HandleAsAssertionFailureDepth(depth int, origErr error) error {
 // - if it detects an API use error, its panic object is a valid error.
 func As(err error, target interface{}) bool { return errutil.As(err, target) }
 
+func AsType[E error](err error) (E, bool) { return errutil.AsType[E](err) }
+
 // Join returns an error that wraps the given errors.
 // Any nil error values are discarded.
 // Join returns nil if errs contains no non-nil values.
